@@ -1,0 +1,48 @@
+/*course table*/
+insert into course values
+	(1,"Java is a robust language","Java"),
+	(2,"C++ is a modern language","C++"),
+	(3,"React  is a front end language","React");
+	
+/*subtopic table*/
+insert into subtopic values
+	(1,"MultiThreading"),
+	(2,"OOPS"),
+	(3,"Component");
+	
+/*course_subtopic table*/
+insert into course_subtopic values
+	(1,(select id from course where c_name="Java") ,(select id from subtopic where s_name="OOPS")),
+	(2,(select id from course where c_name="C++") ,(select id from subtopic where s_name="MultiThreading")),
+	(3,(select id from course where c_name="React") ,(select id from subtopic where s_name="Component"));
+
+/*data for user*/
+insert into users (firstname, lastname,gender,password,role_id)values
+	("uday","yadav","M","u123",1),
+	("swapnil","medhe","M","s123",0);
+	
+/*question table*/
+insert into question values
+	(101, "Keys","easy","1","Keys","ref","Both","None of the above","We can go for keys when there is possibility that our user could change the data",
+		(select id from course_subtopic where course_id=3 and sub_topic_id=3),
+			(select id from users where role_id=1));
+			
+insert into question values
+	(102, "true","easy","1","true","false","","","JSX is type safe",
+		(select id from course_subtopic where course_id=3 and sub_topic_id=3),
+			(select id from users where role_id=1));
+		      
+insert into question values
+	(103,"Props","easy","1","Keys","ref","Elements","Props"," Arbitrary inputs of components are called",
+		(select id from course_subtopic where course_id=3 and sub_topic_id=3),
+			(select id from users where role_id=1));
+			
+insert into question values
+	(104, "freeup resources","medium","2","freeup resources","To keep track of event history","to enhance components","none of the options","Lifecycle methods are mainly used",
+		(select id from course_subtopic where course_id=3 and sub_topic_id=3),
+			(select id from users where role_id=1));
+			
+insert into question values
+	(105, "Compilation","medium","2","Build","Compilation","Execution","Interpretation","In JSX most of the errors can be caught during ",
+		(select id from course_subtopic where course_id=3 and sub_topic_id=3),
+			(select id from users where role_id=1));
